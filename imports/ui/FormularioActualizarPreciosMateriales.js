@@ -14,12 +14,20 @@ class FormularioActualizarPreciosMateriales extends Component {
 
   renderMateriales(){
     return this.props.materiales.map((r,i)=>{
-        return(<li key={i}
-        style={{
-            position: 'relative',
-            left: `${r.pos}%`
-        }}
-        >{r.name}</li>)
+        return([
+        <div class="form-group">
+            <label key={i}>{r.material}</label>
+        <input className="form-control"
+                    key={i}
+                    name = {r.material}
+                    id= {r.material}
+                    type="text"
+                    ref = {(inp)=> this.inName=inp}
+                    placeholder = {r.precio}
+                />
+        </div>
+                ]
+        )
     }
 
     );
@@ -28,13 +36,16 @@ class FormularioActualizarPreciosMateriales extends Component {
   render() {
     console.log(this.props)
   return (
-    <div>
-    
-      
+    <div className="container">
+            <form onSubmit={this.handleSubmit}>
+                {this.renderMateriales()}
+                <button type="submit" class="btn btn-success">Submit</button>      
+            </form>                
     </div>
   )
  }
 }
+
 FormularioActualizarPreciosMateriales.propTypes ={
     materiales: PropTypes.array.isRequired
 }

@@ -1,0 +1,18 @@
+[
+    {
+      "material": "Cobre",
+      "precio": 1000
+    },
+    {
+        "material": "Aluminio",
+        "precio": 5000
+      },
+    {
+      "material": "Bronce",
+      "precio": 1000
+    },
+    {
+        "material": "Zinc",
+        "precio": 3000
+      }
+    ]
