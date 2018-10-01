@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { Button,Form, FormGroup, Label, Input,Container,Row } from 'reactstrap';
+
 
 export default class FormEmpresa extends Component {
     constructor(props){
         super(props);
         this.state={
-            empresa:null
+            NIT: '',
+            nomEmpresa:'',
+            telefono: '',
+            direccion: '',
+            nContacto: '',
+            cContacto:''
+
         };
 
         // Aqui van los bind 
@@ -13,52 +19,48 @@ export default class FormEmpresa extends Component {
 
     }
 
-    
+    // EventHandlers
+    submitForm(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        console.log(data.get('nomEmpresa'));
+        console.log(data);
+          
+      }
+
 
   render() {
     return (
-        <Container>
-                <Form>
-                    <FormGroup > 
-                        <Label>NIT</Label>
-                        <Input type="text" name ="NIT" id="NIT"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Nombre Empresa</Label>
-                        <Input type="text" name ="nomEmpresa" id="nomEmpresa"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Telefono</Label>
-                        <Input type="text" name ="telefono" id="telefono"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Dirección</Label>
-                        <Input type="text" name ="direccion" id="direccion"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Nombre contacto</Label>
-                        <Input type="text" name ="nContacto" id="nContacto"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Cargo contacto</Label>
-                        <Input type="text" name ="cContacto" id="cContacto"/>
-                    </FormGroup>
-                    <Button color="success">Enviar</Button>
-                </Form>
-        </Container>
-
-
-
-       
-            
-        
-
-    //   <form>
-    //       <div class="form-group">
-
-    //       </div>
-
-    //   </form>
+        <div className="container">
+            <form onSubmit={this.handleSubmit}>
+                <div class="form-group">
+                    <label>NIT</label>
+                    <input className="form-control" type="text" name ="NIT" id="NIT"/>
+                </div>
+                <div class="form-group">
+                    <label>Nombre Empresa</label>
+                    <input className="form-control" type="text" name ="nomEmpresa" id="nomEmpresa"/>
+                </div>
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input className="form-control" type="text" name ="telefono" id="telefono"/>
+                </div>
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <input className="form-control"  type="text" name ="direccion" id="direccion"/>
+                </div>
+                <div class="form-group">
+                    <label>Nombre contacto</label>
+                    <input className="form-control" type="text" name ="nContacto" id="nContacto"/>
+                </div>
+                <div class="form-group">
+                    <label>Cargo contacto</label>
+                    <input className="form-control" type="text" name ="cContacto" id="cContacto"/>
+                </div>      
+            </form>                
+            <button type="submit" class="btn btn-primary">Submit</button>
+                
+        </div>
     )
   };
 }
