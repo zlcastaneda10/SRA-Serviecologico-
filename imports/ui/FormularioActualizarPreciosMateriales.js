@@ -10,13 +10,14 @@ class FormularioActualizarPreciosMateriales extends Component {
         this.state={
             
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
   renderMateriales(){
     return this.props.materiales.map((r,i)=>{
         return([
         <div class="form-group">
-            <label key={i}>{r.material}</label>
+            <label>{r.material}</label>
         <input className="form-control"
                     key={i}
                     name = {r.material}
@@ -33,6 +34,22 @@ class FormularioActualizarPreciosMateriales extends Component {
     );
   }  
 
+  handleSubmit(event) {
+    console.log('voy a hacer submit');
+    event.preventDefault();
+    this.props.materiales.map((r,i)=>{
+    let price = document.getElementById(r.material).value
+    console.log(price);
+    var doc = Materiales.findOne({ material: r.material });
+    Materiales.update(
+        { _id: doc._id },
+        {
+            $set: { precio: price}
+        }
+        );
+    }
+    );
+  }
   render() {
     console.log(this.props)
   return (
