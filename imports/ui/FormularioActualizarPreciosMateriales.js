@@ -39,6 +39,7 @@ class FormularioActualizarPreciosMateriales extends Component {
     event.preventDefault();
     this.props.materiales.map((r,i)=>{
     let price = document.getElementById(r.material).value
+    if(price){
     console.log(price);
     var doc = Materiales.findOne({ material: r.material });
     Materiales.update(
@@ -47,6 +48,7 @@ class FormularioActualizarPreciosMateriales extends Component {
             $set: { precio: price}
         }
         );
+    }
     }
     );
   }
