@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {Runners} from '../api/runners.js';
 import FormEmpresa from './FormEmpresa.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
+import FormularioActualizarPreciosMateriales from './FormularioActualizarPreciosMateriales.js';
 
 class App extends Component {
     constructor(props){
@@ -70,6 +71,7 @@ class App extends Component {
       <div>
         <AccountsUIWrapper/>
         <FormEmpresa/>  
+        <FormularioActualizarPreciosMateriales/>
         <h1>Meteor Race</h1>
         <ul>
             {this.renderRunners()}
