@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import {withTracker} from 'meteor/react-meteor-data';
+
+import {Empresas} from '../api/empresas.js';
+import PropTypes from 'prop-types';
 
 
-export default class FormEmpresa extends Component {
+class FormEmpresa extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -15,17 +19,34 @@ export default class FormEmpresa extends Component {
         };
 
         // Aqui van los bind 
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
 
     }
 
     // EventHandlers
-    submitForm(event) {
+    handleChange(event) {
+        const value = event.target.value;
+        this.setState({
+          [event.target.name]: value
+        });
+      }
+
+    handleSubmit(event) {
+        console.log('voy a hacer submit');
+        let id;  
         event.preventDefault();
-        const data = new FormData(event.target);
-        console.log(data.get('nomEmpresa'));
-        console.log(data);
-          
+        id = Empresas.insert({
+            NIT: this.state.NIT,
+            nomEmpresa:this.state.nomEmpresa,
+            telefono: this.state.telefono,
+            direccion: this.state.direccion,
+            nContacto: this.state.nContacto,
+            cContacto:this.state.cContacto
+        });
+        console.log(id);
+        
       }
 
 
@@ -35,32 +56,44 @@ export default class FormEmpresa extends Component {
             <form onSubmit={this.handleSubmit}>
                 <div class="form-group">
                     <label>NIT</label>
-                    <input className="form-control" type="text" name ="NIT" id="NIT"/>
+                    <input className="form-control" type="text" name ="NIT" id="NIT"  value={this.state.NIT} onChange={this.handleChange}/>
                 </div>
                 <div class="form-group">
                     <label>Nombre Empresa</label>
-                    <input className="form-control" type="text" name ="nomEmpresa" id="nomEmpresa"/>
+                    <input className="form-control" type="text" name ="nomEmpresa" id="nomEmpresa" value={this.state.nomEmpresa} onChange={this.handleChange}/>
                 </div>
                 <div class="form-group">
                     <label>Telefono</label>
-                    <input className="form-control" type="text" name ="telefono" id="telefono"/>
+                    <input className="form-control" type="text" name ="telefono" id="telefono" value={this.state.telefono} onChange={this.handleChange} />
                 </div>
                 <div class="form-group">
                     <label>Dirección</label>
-                    <input className="form-control"  type="text" name ="direccion" id="direccion"/>
+                    <input className="form-control"  type="text" name ="direccion" id="direccion" value={this.state.direccion} onChange={this.handleChange} />
                 </div>
                 <div class="form-group">
                     <label>Nombre contacto</label>
-                    <input className="form-control" type="text" name ="nContacto" id="nContacto"/>
+                    <input className="form-control" type="text" name ="nContacto" id="nContacto" value={this.state.nContacto} onChange={this.handleChange} />
                 </div>
                 <div class="form-group">
                     <label>Cargo contacto</label>
-                    <input className="form-control" type="text" name ="cContacto" id="cContacto"/>
-                </div>      
+                    <input className="form-control" type="text" name ="cContacto" id="cContacto" value={this.state.cContacto} onChange={this.handleChange} />
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>      
             </form>                
-            <button type="submit" class="btn btn-primary">Submit</button>
+           
                 
         </div>
     )
   };
 }
+
+FormEmpresa.propTypes ={
+    empresas: PropTypes.array.isRequired
+}
+
+export default withTracker(()=>{
+    return{
+        empresas: Empresas.find({}).fetch(),
+    };
+})(FormEmpresa);
+
