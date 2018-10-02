@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 import {Empresas} from '../api/empresas.js';
 import PropTypes from 'prop-types';
@@ -21,8 +22,6 @@ class FormEmpresa extends Component {
         // Aqui van los bind 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
     }
 
     // EventHandlers
@@ -34,19 +33,19 @@ class FormEmpresa extends Component {
       }
 
     handleSubmit(event) {
-        console.log('voy a hacer submit');
+       
         let id;  
         event.preventDefault();
-        id = Empresas.insert({
+        let empresa ={
             NIT: this.state.NIT,
             nomEmpresa:this.state.nomEmpresa,
             telefono: this.state.telefono,
             direccion: this.state.direccion,
             nContacto: this.state.nContacto,
             cContacto:this.state.cContacto
-        });
-        console.log(id);
-        
+        }
+
+        Meteor.call('empresas.add', empresa);        
       }
 
 
@@ -93,6 +92,7 @@ FormEmpresa.propTypes ={
 }
 
 export default withTracker(()=>{
+    Meteor.subscribe('empresas');
     return{
         empresas: Empresas.find({}).fetch(),
     };
