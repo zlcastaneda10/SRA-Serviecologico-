@@ -56,7 +56,6 @@ class App extends Component {
         <Navbar/>
         <AccountsUIWrapper/>
         <FormEmpresa/>  
-        <FormularioActualizarPreciosMateriales/>
         <FormRecolectores/>
         <VerRecolectores/>
         {Meteor.user() ?
