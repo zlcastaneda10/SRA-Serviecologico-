@@ -54,31 +54,32 @@ class FormEmpresa extends Component {
     return (
         <div className="container">
             <form onSubmit={this.handleSubmit}>
-                <div class="form-group">
+                <h1>Insertar empresa</h1>
+                <div className="form-group">
                     <label>NIT</label>
                     <input className="form-control" type="text" name ="NIT" id="NIT"  value={this.state.NIT} onChange={this.handleChange}/>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Nombre Empresa</label>
                     <input className="form-control" type="text" name ="nomEmpresa" id="nomEmpresa" value={this.state.nomEmpresa} onChange={this.handleChange}/>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Telefono</label>
                     <input className="form-control" type="text" name ="telefono" id="telefono" value={this.state.telefono} onChange={this.handleChange} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Dirección</label>
                     <input className="form-control"  type="text" name ="direccion" id="direccion" value={this.state.direccion} onChange={this.handleChange} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Nombre contacto</label>
                     <input className="form-control" type="text" name ="nContacto" id="nContacto" value={this.state.nContacto} onChange={this.handleChange} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Cargo contacto</label>
                     <input className="form-control" type="text" name ="cContacto" id="cContacto" value={this.state.cContacto} onChange={this.handleChange} />
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>      
+                <button type="submit" className="btn btn-success">Submit</button>      
             </form>                
            
                 
@@ -88,7 +89,7 @@ class FormEmpresa extends Component {
 }
 
 FormEmpresa.propTypes ={
-    empresas: PropTypes.array.isRequired
+    empresas: PropTypes.array.isRequired,
 }
 
 export default withTracker(()=>{

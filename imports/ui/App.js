@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
 
 
 import {Runners} from '../api/runners.js';
 import FormEmpresa from './FormEmpresa.js';
+import FormRecolectores from './FormRecolectores.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import FormularioActualizarPreciosMateriales from './FormularioActualizarPreciosMateriales.js';
+import VerRecolectores from './VerRecolectores.js';
 
 class App extends Component {
     constructor(props){
@@ -66,12 +69,14 @@ class App extends Component {
 
 
   render() {
-      console.log(this.props)
+      
     return (
       <div>
         <AccountsUIWrapper/>
         <FormEmpresa/>  
         <FormularioActualizarPreciosMateriales/>
+        <FormRecolectores/>
+        <VerRecolectores/>
         <h1>Meteor Race</h1>
         <ul>
             {this.renderRunners()}
@@ -85,7 +90,7 @@ class App extends Component {
                     placeholder = "Enter your name"
                 />
         
-        </form>
+            </form>
         }
         
       </div>
@@ -93,12 +98,16 @@ class App extends Component {
   }
 }
 
-App.propTypes ={
-    runners: PropTypes.array.isRequired
-}
-
-export default withTracker(()=>{
-    return{
-        runners: Runners.find({}).fetch(),
+App.propTypes = {
+    runners: PropTypes.array.isRequired,
+    user: PropTypes.object
+  };
+  
+  export default withTracker(() => {
+    Meteor.subscribe('runners');
+  
+    return {
+      runners: Runners.find({}).fetch(),
+      user: Meteor.user()
     };
-})(App);
+  })(App);
