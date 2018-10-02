@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 
 
-import {Recolectores} from '../api/recolectores.js';
+import {Recolecciones} from '../api/recolecciones.js';
 import PropTypes from 'prop-types';
 
 class FormularioCrearRecoleccion extends Component {
     constructor(props){
         super(props);
         this.state={
-            fechayHora: '',
-            estado:'PENDIENTE',
             empresa: null,
             recolector: null,
+            fechayHora: '',
+            estado:'PENDIENTE'
         };
 
         // Aqui van los bind 
@@ -29,10 +29,10 @@ class FormularioCrearRecoleccion extends Component {
         }
 
     handleSubmit(event) {
-        console.log('voy a hacer submit de recolectores');
+        console.log('voy a hacer submit de recolecciones');
         let id;  
         event.preventDefault();
-        id = Recolectores.insert({
+        id = Recolecciones.insert({
             cedula: this.state.cedula,
             nombre:this.state.nombre,
             telefono: this.state.telefono
@@ -66,7 +66,7 @@ class FormularioCrearRecoleccion extends Component {
   }
 }
 
-FormRecolectores.propTypes = {
+FormRecolecciones.propTypes = {
  
   };
   
@@ -75,4 +75,4 @@ FormRecolectores.propTypes = {
     return {
       user: Meteor.user()
     };
-  })(FormRecolectores);
+  })(FormRecolecciones);

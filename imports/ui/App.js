@@ -76,7 +76,6 @@ class App extends Component {
         <Navbar/>
         <AccountsUIWrapper/>
         <FormEmpresa/>  
-        <FormularioActualizarPreciosMateriales/>
         <FormRecolectores/>
         <VerRecolectores/>
         <h1>Meteor Race</h1>
