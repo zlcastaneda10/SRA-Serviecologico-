@@ -33,39 +33,19 @@ class App extends Component {
         );
     }
 
-    addRunner(e){
-        e.preventDefault();
-        const name = this.inName.value;
-        let id;
-
-        const player = Runners.findOne({
-            name: name
+    addRunner() {
+    
+        const me = this;
+        Meteor.call('runners.add', name, function (err,player) {
+          if(err) {alert(err); return; }
+          me.setState({player})
         });
-        if(!player){
-            id = Runners.insert({
-                name: name,
-                pos:0
-            });
-        }else{
-            id = player._id;
-        }
+      }
+    
 
-
-        
-        this.setState({
-            playerName: name,
-            playerId: id
-        });
-
-    }
 
     run(){
-        Runners.update(
-            this.state.playerId,
-            {
-                $inc:{pos:1}
-            }
-        )
+        Meteor.call('runners.run');
     }
 
 
@@ -79,21 +59,25 @@ class App extends Component {
         <FormularioActualizarPreciosMateriales/>
         <FormRecolectores/>
         <VerRecolectores/>
-        <h1>Meteor Race</h1>
-        <ul>
-            {this.renderRunners()}
-        </ul>
-        {
-            this.state.playerName?<button onClick={this.run.bind(this)}>Run!!</button> :
-            <form onSubmit={this.addRunner.bind(this)}>
-                <input
-                    type="text"
-                    ref = {(inp)=> this.inName=inp}
-                    placeholder = "Enter your name"
-                />
-        
-            </form>
+        {Meteor.user() ?
+          this.state.player ?
+            <button onClick={this.run.bind(this)}>Run Forest!</button>:
+            <button onClick={this.addRunner.bind(this)}
+            >Enter race!</button> :
+          <div> Please log in to play </div>
         }
+        <h2>Runners</h2>
+        <ul>
+          {this.props.runners.map( (r,i) => 
+            <li
+             key={i}
+             style={{
+              position: 'relative',
+              left: `${r.pos}%`
+             }}
+             >{r.name}</li>
+          )}
+        </ul>
         
       </div>
     )
