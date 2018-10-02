@@ -66,7 +66,7 @@ class FormularioCrearRecoleccion extends Component {
   }
 }
 
-FormRecolecciones.propTypes = {
+FormularioCrearRecoleccion.propTypes = {
  
   };
   
@@ -75,4 +75,4 @@ FormRecolecciones.propTypes = {
     return {
       user: Meteor.user()
     };
-  })(FormRecolecciones);
+  })(FormularioCrearRecoleccion);
