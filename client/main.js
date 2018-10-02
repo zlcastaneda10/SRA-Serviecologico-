@@ -10,6 +10,7 @@ import FormularioProcesarRecoleccion from '../imports/ui/FormularioProcesarRecol
 import VerRecolectores from '../imports/ui/VerRecolectores.js';
 import LandingPage from '../imports/ui/LandingPage.js';
 import App from "../imports/ui/App.js";
+import FormRecolectores from "../imports/ui/FormRecolectores.js";
 import './main.html';
 import '../imports/startup/accounts-config.js';
 
@@ -22,11 +23,12 @@ Meteor.startup(()=>{
     <App>
       <Switch>
         <Route exact path="/" component={LandingPage}/>
-        <Route path="/ActualizarMateriales" component={FormularioActualizarPreciosMateriales}/>
-        <Route path="/RegistrarEmpresa" component={FormEmpresa}/>
-        <Route path="/CrearRecoleccion" component={FormularioCrearRecoleccion}/>
-        <Route path="/ProcesarRecoleccion" component={FormularioProcesarRecoleccion}/>
+        <Route path="/actualizarMateriales" component={FormularioActualizarPreciosMateriales}/>
+        <Route path="/registrarEmpresa" component={FormEmpresa}/>
+        <Route path="/crearRecoleccion" component={FormularioCrearRecoleccion}/>
+        <Route path="/procesarRecoleccion" component={FormularioProcesarRecoleccion}/>
         <Route path="/verRecolectores" component={VerRecolectores}/>
+        <Route path="/añadirInformacion" component={FormRecolectores}/>
       </Switch>
     </App>
   </Router>

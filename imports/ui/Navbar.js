@@ -13,6 +13,7 @@ class Navbar extends Component {
           <nav class="navbar navbar-dark bg-dark  fixed-top" >
             <a class="navbar-brand" href="#">
                  <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
+                 &emsp;  
                  SRA
              </a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +22,9 @@ class Navbar extends Component {
              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                  <div class="navbar-nav">
                  
-                   <a class="nav-item nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                   <a class="nav-item nav-link" href="#">Agregar empresa</a>
-                   <a class="nav-item nav-link" href="#">Precio materiales</a>
-                   <a class="nav-item nav-link disabled" href="#">Agregar recolector</a>
+                   <a class="nav-item nav-link active" href="/verRecolectores">Ver Recolectores<span class="sr-only">(current)</span></a>
+                   <a class="nav-item nav-link" href="/registrarEmpresa">Registrar empresa</a>
+                   <a class="nav-item nav-link" href="/actualizarMateriales">Actualizar Materiales</a>
                    <AccountsUIWrapper/> 
              </div>
              </div>
@@ -35,6 +35,7 @@ class Navbar extends Component {
         <nav class="navbar navbar-dark bg-dark  fixed-top" >
         <a class="navbar-brand" href="#">
              <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
+             &emsp;  
              SRA
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +43,8 @@ class Navbar extends Component {
          </button>
          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
              <div class="navbar-nav">
-               <a class="nav-item nav-link disabled" href="#">Ver recolecciones</a>
+               <a class="nav-item nav-link" href="/procesarRecoleccion">Ver recolecciones</a>
+               <a class="nav-item nav-link" href="/añadirInformacion">Añadir Información</a>
                <AccountsUIWrapper/> 
          </div>
          </div>
@@ -55,7 +57,9 @@ class Navbar extends Component {
       <nav class="navbar navbar-dark bg-dark  fixed-top" >
         <a class="navbar-brand" href="#">
              <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
-             SRA
+             &emsp;  
+             SRA        
+             &emsp;         
              <AccountsUIWrapper/>  
          </a>
          
