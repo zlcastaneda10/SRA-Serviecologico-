@@ -4,7 +4,7 @@ import {Meteor} from 'meteor/meteor';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import FormularioActualizarPreciosMateriales from '../imports/ui/FormularioActualizarPreciosMateriales.js';
-import App from "../imports/ui/App2.js";
+import App from "../imports/ui/App.js";
 import './main.html';
 import '../imports/startup/accounts-config.js';
 

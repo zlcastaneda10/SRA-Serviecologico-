@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
 
 import {Materiales} from '../api/materiales.js';
 
@@ -35,19 +36,13 @@ class FormularioActualizarPreciosMateriales extends Component {
   }  
 
   handleSubmit(event) {
-    console.log('voy a hacer submit');
+    
     event.preventDefault();
     this.props.materiales.map((r,i)=>{
     let price = document.getElementById(r.material).value
     if(price){
     console.log(price);
-    var doc = Materiales.findOne({ material: r.material });
-    Materiales.update(
-        { _id: doc._id },
-        {
-            $set: { precio: price}
-        }
-        );
+    Meteor.call('materiales.update', r.material, price);
     }
     }
     );
@@ -71,6 +66,7 @@ FormularioActualizarPreciosMateriales.propTypes ={
 }
 
 export default withTracker(()=>{
+    Meteor.subscribe('materiales');
     return{
         materiales: Materiales.find({}).fetch(),
     };
