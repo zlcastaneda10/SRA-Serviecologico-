@@ -57,6 +57,7 @@ class FormularioActualizarPreciosMateriales extends Component {
   return (
     <div className="container">
             <form onSubmit={this.handleSubmit}>
+            <h1>Actualizar Precios de los materiales</h1>
                 {this.renderMateriales()}
                 <button type="submit" class="btn btn-success">Submit</button>      
             </form>                
