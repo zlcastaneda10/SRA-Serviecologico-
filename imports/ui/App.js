@@ -10,6 +10,7 @@ import FormRecolectores from './FormRecolectores.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import FormularioActualizarPreciosMateriales from './FormularioActualizarPreciosMateriales.js';
 import VerRecolectores from './VerRecolectores.js';
+import Navbar from './Navbar.js';
 
 class App extends Component {
     constructor(props){
@@ -72,6 +73,7 @@ class App extends Component {
       
     return (
       <div>
+        <Navbar/>
         <AccountsUIWrapper/>
         <FormEmpresa/>  
         <FormularioActualizarPreciosMateriales/>

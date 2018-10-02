@@ -10,7 +10,13 @@ class VerRecolectores extends Component {
 
     renderRunners(){
         return this.props.recolectores.map((r,i)=>{
-            return(<li key={i}>{r.nombre}</li>)
+            return(
+                <li key={i} className='list-group-item'>
+                    <h3>{r.nombre}</h3>
+                    Telefono: {r.telefono}
+                    <br/>
+                    <button className="btn btn-success">Asignar recoleccion</button>
+                </li>)
         }
         );
     }
@@ -20,7 +26,7 @@ class VerRecolectores extends Component {
   render() {
     return (
       <div>
-        <ul>
+        <ul className='list-group'>
             {this.renderRunners()}
         </ul>
       </div>
