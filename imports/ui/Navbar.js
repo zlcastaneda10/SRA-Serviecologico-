@@ -11,7 +11,7 @@ class Navbar extends Component {
       if(this.props.user.profile.rol === 'asesor'){
         return (
           <nav class="navbar navbar-dark bg-dark  fixed-top" >
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                  <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
                  &emsp;  
                  SRA
@@ -33,7 +33,7 @@ class Navbar extends Component {
       }else if(this.props.user.profile.rol === 'recolector'){
         return(
         <nav class="navbar navbar-dark bg-dark  fixed-top" >
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
              <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
              &emsp;  
              SRA
@@ -55,15 +55,13 @@ class Navbar extends Component {
     }else{
       return(
       <nav class="navbar navbar-dark bg-dark  fixed-top" >
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
              <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
              &emsp;  
              SRA        
              &emsp;         
              <AccountsUIWrapper/>  
          </a>
-         
-         
         
        </nav>
       )
