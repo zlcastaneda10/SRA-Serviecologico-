@@ -3,20 +3,18 @@ import {withTracker} from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 
+
 import {Recolectores} from '../api/recolectores.js';
 
 class VerRecolectores extends Component {
 
 
     renderRunners(){
+        console.log(Meteor.users.find().fetch());
         return this.props.recolectores.map((r,i)=>{
+          
             return(
-                <li key={i} className='list-group-item'>
-                    <h3>{r.nombre}</h3>
-                    Telefono: {r.telefono}
-                    <br/>
-                    <button className="btn btn-success">Asignar recoleccion</button>
-                </li>)
+                <h2>holi</h2>)
         }
         );
     }
@@ -26,6 +24,7 @@ class VerRecolectores extends Component {
   render() {
     return (
       <div>
+        <h1>Aqui los recolectores</h1>
         <ul className='list-group'>
             {this.renderRunners()}
         </ul>
@@ -35,13 +34,13 @@ class VerRecolectores extends Component {
 }
 
 VerRecolectores.propTypes = {
-    recolectores: PropTypes.array.isRequired
+    recolectores: PropTypes.object.isRequired
   };
   
   export default withTracker(() => {
-    Meteor.subscribe('recolectores');
+    Meteor.subscribe('users');
   
     return {
-      recolectores: Recolectores.find({}).fetch(),
+      recolectores: Meteor.users.find({}),
     };
   })(VerRecolectores);

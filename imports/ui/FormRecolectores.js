@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
-
-
-import {Recolectores} from '../api/recolectores.js';
 import PropTypes from 'prop-types';
+
+
+import VerRecolectores from './VerRecolectores.js'
 
 class FormRecolectores extends Component {
     constructor(props){
@@ -30,15 +30,16 @@ class FormRecolectores extends Component {
 
     handleSubmit(event) {
         console.log('voy a hacer submit de recolectores');
-        let id;  
+
+        Meteor.users.update({_id: Meteor.userId()}, {$set: {
+            'profile.cedula': this.state.cedula,
+            'profile.nombre': this.state.nombre,
+            'profile.telefono': this.state.telefono,
+            'profile.rol':'recolector'
+
+        }});
         event.preventDefault();
-        id = Recolectores.insert({
-            cedula: this.state.cedula,
-            nombre:this.state.nombre,
-            telefono: this.state.telefono
-        });
-        console.log(id);
-        
+
         }
 
 
@@ -60,14 +61,15 @@ class FormRecolectores extends Component {
                 <input className="form-control" type="text" name ="telefono" id="telefono" value={this.state.telefono} onChange={this.handleChange} />
             </div>
             <button type="submit" className="btn btn-success">Submit</button>      
-        </form>                    
+        </form> 
+        <VerRecolectores/>                   
     </div>
     )
   }
 }
 
 FormRecolectores.propTypes = {
- 
+    user: PropTypes.object
   };
   
   export default withTracker(() => {
