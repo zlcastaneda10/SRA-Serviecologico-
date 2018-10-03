@@ -15,12 +15,14 @@ export default class LandingPage extends Component {
         <Jumbotron className="home_header_img">
           <Container >
             <h1 className="display-3 merienda">Asistente de Recolección - Serviecologico S.A.S</h1>
-            <p className="lead">Renueva tu guardaropa intercambiando prendas con otros miembros de la comunidad</p>
+            <p className="lead">SRA es una herramienta desarrollada para Serviecologico S.A.S que apoya la logistica
+            de recolección de materiales. La aplicación permite a asesores comerciales asignar y supervisar recolecciones
+            a diferentes empresas cliente. Permite a los recolectores ver sus recolecciones asignadas, procesarlas y
+            reportarlas a la empresa.</p>
+            <br/>
             <hr className="my-2" />
-            <p>¿Que estas esperando? Grandes tesoros aguardan.</p>           
-            <p className="lead">
-              <Button onClick={()=>{window.location = '/signUp';}} className="nav_btn">Sign Up</Button>
-            </p>
+            <p>La aplicacion permite a Serviecologico llevar un registro historico de las recolecciones hechas permitiendole
+                llevar una mejor administración y tomar mejores decisiones basadas en datos.</p>         
           </Container>
         </Jumbotron>
         
