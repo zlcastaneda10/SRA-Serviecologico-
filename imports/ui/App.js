@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar.js';
+import TestUser from './TestUser';
 
 export default class App extends React.Component {
   render() {
@@ -7,6 +8,7 @@ export default class App extends React.Component {
       return (
         <div>
          <Navbar/>
+
           <div className="content">
             {this.props.children}
           </div>
@@ -14,6 +16,7 @@ export default class App extends React.Component {
             <div className="footer_makers" align="center">Por Juan Camilo Useche y Zulma Castañeda</div>
             <img className="MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" alt= "MIT license logo"/>
           </footer>
+          <TestUser/>
         </div>
       );
     } 

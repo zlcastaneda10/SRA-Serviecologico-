@@ -1,4 +1,10 @@
 import {Mongo} from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
 
-export const Recolectores = new Mongo.Collection('recolectores');
+
+if (Meteor.isServer) {
+    Meteor.publish('users', function() {
+        return Meteor.users.find({}, {fields:{profile: true}});
+    });
+  }
 

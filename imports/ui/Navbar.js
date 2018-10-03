@@ -24,6 +24,7 @@ class Navbar extends Component {
                  
                    <a class="nav-item nav-link active" href="/verRecolectores">Ver Recolectores<span class="sr-only">(current)</span></a>
                    <a class="nav-item nav-link" href="/registrarEmpresa">Registrar empresa</a>
+                   <a class="nav-item nav-link" href="/crearRecoleccion">Crear Recolección</a>
                    <a class="nav-item nav-link" href="/actualizarMateriales">Actualizar Materiales</a>
                    <AccountsUIWrapper/> 
              </div>

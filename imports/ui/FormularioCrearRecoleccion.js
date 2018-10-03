@@ -4,6 +4,7 @@ import {withTracker} from 'meteor/react-meteor-data';
 
 import {Recolecciones} from '../api/recolecciones.js';
 import PropTypes from 'prop-types';
+import { Empresas } from '../api/empresas.js';
 
 class FormularioCrearRecoleccion extends Component {
     constructor(props){
@@ -11,13 +12,15 @@ class FormularioCrearRecoleccion extends Component {
         this.state={
             empresa: null,
             recolector: null,
-            fechayHora: '',
+            fecha: '',
+            hora:'',
             estado:'PENDIENTE'
         };
 
         // Aqui van los bind 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderEmpresas = this.renderEmpresas.bind(this);
     }
 
     // EventHandlers
@@ -29,35 +32,54 @@ class FormularioCrearRecoleccion extends Component {
         }
 
     handleSubmit(event) {
-        console.log('voy a hacer submit de recolecciones');
-        let id;  
-        event.preventDefault();
-        id = Recolecciones.insert({
-            cedula: this.state.cedula,
-            nombre:this.state.nombre,
-            telefono: this.state.telefono
-        });
-        console.log(id);
-        
+
+        let recoleccion ={
+            empresa: this.state.empresa,
+            recolector:this.state.recolector,
+            fecha: this.state.fecha,
+            hora: this.state.hora,
+            estado: this.state.estado
         }
+        
+        Meteor.call('recolecciones.add', recoleccion);
+
+        this.setState({
+            fecha: '',
+            hora:'',
+        });
+      
+        
+    }
+
+    renderEmpresas(){
+        return this.props.empresas.map((r,i)=>{
+            return(
+                <option key={i} value ={r.nomEmpresa}> {r.nomEmpresa} </option>
+            );
+        })
+    }
+
+
 
 
   render() {
     return (
         <div className="container">
         <form onSubmit={this.handleSubmit}>
-            <h1>Insertar Recolector</h1>
+            <h1>Insertar Recoleccion</h1>
             <div className="form-group">
-                <label>Cedula</label>
-                <input className="form-control" type="text" name ="cedula" id="cedula"  value={this.state.cedula} onChange={this.handleChange}/>
+                <label>Empresas</label>
+                <select className='form-control'name='empresa' value={this.state.empresa} onChange={this.handleChange}>
+                    {this.renderEmpresas()}
+                </select>
             </div>
             <div className="form-group">
-                <label>Nombre</label>
-                <input className="form-control" type="text" name ="nombre" id="nombre" value={this.state.nombre} onChange={this.handleChange}/>
+                <label>Fecha</label>
+                <input  className="form-control" type="date" id="fecha" name="fecha" min="2018-01-01"value={this.state.nombre} onChange={this.handleChange}/>  
             </div>
             <div className="form-group">
-                <label>Telefono</label>
-                <input className="form-control" type="text" name ="telefono" id="telefono" value={this.state.telefono} onChange={this.handleChange} />
+                <label>Hora</label>
+                <input className="form-control" id="hora" type="time" name="hora" value={this.state.telefono} onChange={this.handleChange}/>
             </div>
             <button type="submit" className="btn btn-success">Submit</button>      
         </form>                    
@@ -67,12 +89,15 @@ class FormularioCrearRecoleccion extends Component {
 }
 
 FormularioCrearRecoleccion.propTypes = {
- 
+    empresas: PropTypes.array.isRequired
   };
   
   export default withTracker(() => {
-     
-    return {
-      user: Meteor.user()
+    Meteor.subscribe('empresas');
+
+    return{
+        empresas: Empresas.find({}).fetch(),
+        user: Meteor.user(),
     };
+    
   })(FormularioCrearRecoleccion);
