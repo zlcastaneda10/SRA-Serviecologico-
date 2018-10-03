@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
-
-import VerRecolectores from './VerRecolectores.js'
-
 class FormRecolectores extends Component {
     constructor(props){
         super(props);
@@ -38,6 +35,12 @@ class FormRecolectores extends Component {
             'profile.rol':'recolector'
 
         }});
+
+        this.setState({
+            cedula: '',
+            nombre:'',
+            telefono: ''
+        });
         event.preventDefault();
 
         }
@@ -62,7 +65,7 @@ class FormRecolectores extends Component {
             </div>
             <button type="submit" className="btn btn-success">Submit</button>      
         </form> 
-        <VerRecolectores/>                   
+                      
     </div>
     )
   }

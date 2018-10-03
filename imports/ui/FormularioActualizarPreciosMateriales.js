@@ -17,7 +17,7 @@ class FormularioActualizarPreciosMateriales extends Component {
   renderMateriales(){
     return this.props.materiales.map((r,i)=>{
         return([
-        <div class="form-group">
+        <div className="form-group">
             <label>{r.material}</label>
         <input className="form-control"
                     key={i}
@@ -54,7 +54,7 @@ class FormularioActualizarPreciosMateriales extends Component {
             <form onSubmit={this.handleSubmit}>
             <h1>Actualizar Precios de los materiales</h1>
                 {this.renderMateriales()}
-                <button type="submit" class="btn btn-success">Submit</button>      
+                <button type="submit" className="btn btn-success">Submit</button>      
             </form>                
     </div>
   )

@@ -9,7 +9,7 @@ import FormEmpresa from './FormEmpresa.js';
 import FormRecolectores from './FormRecolectores.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
 import FormularioActualizarPreciosMateriales from './FormularioActualizarPreciosMateriales.js';
-import VerRecolectores from './VerRecolectores.js';
+
 import Navbar from './Navbar.js';
 
 class App1 extends Component {
