@@ -2,4 +2,28 @@ form {
     padding: 5%;
     border:1px solid lightgrey;
     border-radius: 5px;
+    margin: 5%;
+}
+body {
+    padding-top: 50px; 
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 50px; /* bottom = footer height */
+}
+footer {
+    position: absolute;
+    color: aliceblue;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+footer img{
+    margin: 0 auto;
 }

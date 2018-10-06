@@ -50,7 +50,7 @@ class FormRecolectores extends Component {
     return (
         <div className="container">
         <form onSubmit={this.handleSubmit}>
-            <h1>Insertar Recolector</h1>
+            <h1>Informacion personal</h1>
             <div className="form-group">
                 <label>Cedula</label>
                 <input className="form-control" type="text" name ="cedula" id="cedula"  value={this.state.cedula} onChange={this.handleChange}/>

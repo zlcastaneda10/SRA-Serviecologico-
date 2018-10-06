@@ -8,6 +8,15 @@ import AccountsUIWrapper from './AccountsUIWrapper.js';
 class Navbar extends Component {
   render() {
     if(this.props.user){
+      if(this.props.user.profile === undefined){
+        console.log('ya se que es undefined!!') 
+        Meteor.users.update({_id: Meteor.userId()}, {$set: {
+          'profile.rol':'recolector'
+      }});
+      window.location.reload();
+      } 
+
+
       if(this.props.user.profile.rol === 'asesor'){
         return (
           <nav class="navbar navbar-dark bg-dark  fixed-top" >
