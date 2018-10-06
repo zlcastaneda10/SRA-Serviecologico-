@@ -28,7 +28,6 @@ import {Recolecciones} from '../api/recolecciones.js';
                  <strong>Hora:</strong> {r.hora}<br/>
                  <strong>Estado:</strong> {r.estado}<br/>
                  <button className='btn btn-success' onClick={this.asignarRecoleccion.bind(this,r._id)}>Aceptar Recoleccion</button>
-                 
                  </li>
             );
         })

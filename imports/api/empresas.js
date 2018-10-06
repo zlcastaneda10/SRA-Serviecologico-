@@ -6,6 +6,11 @@ if (Meteor.isServer) {
     Meteor.publish('empresas', () => {
       return Empresas.find({});
     });
+
+
+    Meteor.publish('empresasPorNombre', function (pnomEmpresa) {
+        return Empresas.find({nomEmpresa:pnomEmpresa});
+    })  
 }
 
 Meteor.methods({

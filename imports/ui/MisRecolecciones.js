@@ -3,6 +3,8 @@ import {withTracker} from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 
+
+import {ProcesarRecoleccion} from './ProcesarRecoleccion.js'
 import {Recolecciones} from '../api/recolecciones.js';
 
  class MisRecolecciones extends Component {
@@ -28,7 +30,7 @@ import {Recolecciones} from '../api/recolecciones.js';
                  <strong>Hora:</strong> {r.hora}<br/>
                  <strong>Estado:</strong> {r.estado}<br/>
                  <button className='btn btn-success' onClick={this.desasignarRecoleccion.bind(this,r._id)}>Rechazar Recoleccion</button>
-                 
+                 <ProcesarRecoleccion empresa={r.empresa}/>
                  </li>
             );
         })

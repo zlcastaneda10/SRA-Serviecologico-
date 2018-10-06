@@ -4,23 +4,17 @@ import {withTracker} from 'meteor/react-meteor-data';
 
 import {Recolecciones} from '../api/recolecciones.js';
 import PropTypes from 'prop-types';
-import { Empresas } from '../api/empresas.js';
 
-class FormularioCrearRecoleccion extends Component {
+export class ProcesarRecoleccion extends Component {
     constructor(props){
         super(props);
         this.state={
-            empresa: null,
-            recolector: null,
-            fecha: '',
-            hora:'',
-            estado:'PENDIENTE'
+            
         };
 
         // Aqui van los bind 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderEmpresas = this.renderEmpresas.bind(this);
     }
 
     // EventHandlers
@@ -50,36 +44,23 @@ class FormularioCrearRecoleccion extends Component {
       
         
     }
+    renderEmpresa()
+    {
 
-    renderEmpresas(){
-        return this.props.empresas.map((r,i)=>{
-            return(
-                <option key={i} value ={r.nomEmpresa}> {r.nomEmpresa} </option>
-            );
-        })
-    }
-
-
-
-
+    }   
   render() {
     return (
         <div className="container">
+        <h1>Procesar Recolección</h1>
+        <h2>Empresa Cliente</h2>
+            {this.renderEmpresa()}
         <form onSubmit={this.handleSubmit}>
-            <h1>Insertar Recolección</h1>
+            <h1>Materiales a recolectar</h1>
             <div className="form-group">
-                <label>Empresas</label>
+                <label>Materiales</label>
                 <select className='form-control'name='empresa' value={this.state.empresa} onChange={this.handleChange}>
-                    {this.renderEmpresas()}
+                    
                 </select>
-            </div>
-            <div className="form-group">
-                <label>Fecha</label>
-                <input  className="form-control" type="date" id="fecha" name="fecha" min="2018-01-01"value={this.state.nombre} onChange={this.handleChange}/>  
-            </div>
-            <div className="form-group">
-                <label>Hora</label>
-                <input className="form-control" id="hora" type="time" name="hora" value={this.state.telefono} onChange={this.handleChange}/>
             </div>
             <button type="submit" className="btn btn-success">Submit</button>      
         </form>                    
@@ -88,16 +69,18 @@ class FormularioCrearRecoleccion extends Component {
   }
 }
 
-FormularioCrearRecoleccion.propTypes = {
+ProcesarRecoleccion.propTypes = {
     empresas: PropTypes.array.isRequired
   };
   
   export default withTracker(() => {
-    Meteor.subscribe('empresas');
+    Meteor.subscribe('empresasPorNombre', this.state.nomEmpresa);
+    Meteor.subscribe('recolecciones');
+    Meteor.subscribe('materiales');
 
     return{
         empresas: Empresas.find({}).fetch(),
         user: Meteor.user(),
     };
     
-  })(FormularioCrearRecoleccion);
+  })(ProcesarRecoleccion);
