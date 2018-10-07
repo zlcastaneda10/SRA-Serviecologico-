@@ -39,5 +39,16 @@ if (Meteor.isServer) {
                     }
             }
             );
+    },
+    'recolecciones.procesar':function(idRecoleccion){
+        Recolecciones.update(
+                { _id: idRecoleccion },
+                {
+                    $set: {
+                        estado: 'TERMINADO',
+
+                        }
+                }
+            );
     }
 });

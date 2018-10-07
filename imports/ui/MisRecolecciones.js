@@ -6,6 +6,8 @@ import { Meteor } from 'meteor/meteor';
 
 import {ProcesarRecoleccion} from './ProcesarRecoleccion.js'
 import {Recolecciones} from '../api/recolecciones.js';
+import {Materiales} from '../api/materiales.js';
+import { Empresas } from '../api/empresas.js';
 
  class MisRecolecciones extends Component {
 
@@ -30,7 +32,9 @@ import {Recolecciones} from '../api/recolecciones.js';
                  <strong>Hora:</strong> {r.hora}<br/>
                  <strong>Estado:</strong> {r.estado}<br/>
                  <button className='btn btn-success' onClick={this.desasignarRecoleccion.bind(this,r._id)}>Rechazar Recoleccion</button>
-                 <ProcesarRecoleccion empresa={r.empresa}/>
+                 <button type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">Procesar recoleccion</button>
+
+                 <ProcesarRecoleccion empresa={r.empresa} materiales={this.props.materiales} recoleccion ={r._id}/>
                 </li>
             );
         })
@@ -50,12 +54,16 @@ import {Recolecciones} from '../api/recolecciones.js';
 }
 
 MisRecolecciones.propTypes ={
-    recolecciones: PropTypes.array.isRequired
+    recolecciones: PropTypes.array.isRequired,
+    materiales: PropTypes.array.isRequired
 }
 
 export default withTracker(()=>{
     Meteor.subscribe('misRecolecciones');
+    Meteor.subscribe('materiales');
+    Meteor.subscribe('empresasPorNombre')
     return{
         recolecciones: Recolecciones.find({}).fetch(),
+        materiales: Materiales.find({}).fetch(),
     };
 })(MisRecolecciones);

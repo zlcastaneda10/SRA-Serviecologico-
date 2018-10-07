@@ -18,9 +18,9 @@ class Navbar extends Component {
 
       if(this.props.user.profile.rol === 'asesor'){
         return (
-          <nav class="navbar navbar-dark bg-dark  fixed-top" >
-            <a class="navbar-brand" href="/">
-                 <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
+          <nav className="navbar navbar-dark bg-dark  fixed-top" >
+            <a className="navbar-brand" href="/">
+                 <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" className="d-inline-block align-top" alt=""/>
                  &emsp;  
                  SRA
              </a>
@@ -40,9 +40,9 @@ class Navbar extends Component {
          )
       }else if(this.props.user.profile.rol === 'recolector'){
         return(
-        <nav class="navbar navbar-dark bg-dark  fixed-top" >
-        <a class="navbar-brand" href="/">
-             <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" class="d-inline-block align-top" alt=""/>
+        <nav className="navbar navbar-dark bg-dark  fixed-top" >
+        <a className="navbar-brand" href="/">
+             <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" className="d-inline-block align-top" alt=""/>
              &emsp;  
              SRA
          </a>
