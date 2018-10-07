@@ -9,7 +9,6 @@ class Navbar extends Component {
   render() {
     if(this.props.user){
       if(this.props.user.profile === undefined){
-        console.log('ya se que es undefined!!') 
         Meteor.users.update({_id: Meteor.userId()}, {$set: {
           'profile.rol':'recolector'
       }});
@@ -64,16 +63,19 @@ class Navbar extends Component {
 
     }else{
       return(
-      <nav className="navbar navbar-dark bg-dark  fixed-top" >
-        <a className="navbar-brand" href="#">
-             <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" className="d-inline-block align-top" alt=""/>
-             &emsp;  
-             SRA        
-             &emsp;         
-             <AccountsUIWrapper/>  
-         </a>
-        
-       </nav>
+       
+
+        <nav className="navbar navbar-dark bg-dark  fixed-top" >
+          <a className="navbar-brand" href="#">
+              <img src="http://www.serviecologico.com/wp-content/uploads/2017/09/Logo.png" width="50" height="25" className="d-inline-block align-top" alt=""/>
+              &emsp;  
+              SRA        
+              &emsp;         
+              <AccountsUIWrapper/>  
+             
+          </a>
+          
+        </nav>
       )
     }
   }

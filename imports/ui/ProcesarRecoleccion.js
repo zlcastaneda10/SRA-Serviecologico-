@@ -3,9 +3,11 @@ import {withTracker} from 'meteor/react-meteor-data';
 
 
 import {Recolecciones} from '../api/recolecciones.js';
+import {Materiales} from '../api/materiales.js';
+import {Empresas} from '../api/empresas.js';
 import PropTypes from 'prop-types';
 
-export class ProcesarRecoleccion extends Component {
+class ProcesarRecoleccion extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -15,6 +17,7 @@ export class ProcesarRecoleccion extends Component {
         // Aqui van los bind 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderMateriales = this.renderMateriales.bind(this);
     }
 
     // EventHandlers
@@ -44,20 +47,46 @@ export class ProcesarRecoleccion extends Component {
       
         
     }
-    renderEmpresa()
-    {
 
-    }   
+    renderMateriales(){
+        return this.props.materiales.map((r,i)=>{
+            return([
+                
+                    <div>
+                        <label>{r.material}</label>
+                    <input type = "number"
+                            key={i}
+                            name = {r.material}
+                            id= {r.material + "_cantidad"}
+                            ref = {(inp)=> this.inName=inp}
+                            placeholder = "cantidad"
+                    />
+                    <input type = "text"
+                    key={i}
+                    name = {r.material}
+                    id= {r.material + "_precio"}
+                    ref = {(inp)=> this.inName=inp}
+                    placeholder = {r.precio}
+                    />
+                    <label>00</label>
+                </div>  
+                    ]
+            )
+        }
+    
+        );
+      }  
+
   render() {
     return (
         <div className="container">
         <h1>Procesar Recolección</h1>
         <h2>Empresa Cliente</h2>
-            {this.renderEmpresa()}
+           
         <form onSubmit={this.handleSubmit}>
             <h1>Materiales a recolectar</h1>
             <div className="form-group">
-                <label>Materiales</label>
+                {this.renderMateriales}                
                 <select className='form-control'name='empresa' value={this.state.empresa} onChange={this.handleChange}>
                     
                 </select>
@@ -70,7 +99,8 @@ export class ProcesarRecoleccion extends Component {
 }
 
 ProcesarRecoleccion.propTypes = {
-    empresas: PropTypes.array.isRequired
+    empresas: PropTypes.array.isRequired,
+    materiales: PropTypes.array.isRequired
   };
   
   export default withTracker(() => {
@@ -79,6 +109,7 @@ ProcesarRecoleccion.propTypes = {
     Meteor.subscribe('materiales');
 
     return{
+        materiales: Materiales.find({}).fetch(),
         empresas: Empresas.find({}).fetch(),
         user: Meteor.user(),
     };
