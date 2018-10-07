@@ -8,7 +8,11 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('misRecolecciones', ()=>{
-        return Recolecciones.find({recolector: Meteor.user().username});
+        return Recolecciones.find({recolector: Meteor.user().username, estado: "ASIGNADO"});
+    })
+
+    Meteor.publish('recoleccionesTerminadas', ()=>{
+        return Recolecciones.find({estado: "TERMINADO"});
     })
 }
 
@@ -40,15 +44,15 @@ if (Meteor.isServer) {
             }
             );
     },
-    'recolecciones.procesar':function(idRecoleccion){
+    'recolecciones.procesar':function(idRecoleccion, total){
         Recolecciones.update(
                 { _id: idRecoleccion },
                 {
                     $set: {
                         estado: 'TERMINADO',
-
+                        "total": total
                         }
                 }
             );
-    }
+    },
 });

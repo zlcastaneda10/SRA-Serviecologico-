@@ -11,6 +11,8 @@ import MisRecolecciones from '../imports/ui/MisRecolecciones.js';
 import LandingPage from '../imports/ui/LandingPage.js';
 import App from "../imports/ui/App.js";
 import FormRecolectores from "../imports/ui/FormRecolectores.js";
+import ProcesarRecoleccion from "../imports/ui/ProcesarRecoleccion.js";
+import VerRecoleccionesTerminadas from "../imports/ui/VerRecoleccionesTerminadas.js";
 import './main.html';
 import '../imports/startup/accounts-config.js';
 
@@ -29,6 +31,8 @@ Meteor.startup(()=>{
         <Route path="/verRecolecciones" component={VerRecolecciones}/>
         <Route path="/misRecolecciones" component={MisRecolecciones}/>
         <Route path="/añadirInformacion" component={FormRecolectores}/>
+        <Route path="/procesarRecoleccion" component={ProcesarRecoleccion}/>
+        <Route path="/verRecoleccionesTerminadas" component={VerRecoleccionesTerminadas}/>
       </Switch>
     </App>
   </Router>

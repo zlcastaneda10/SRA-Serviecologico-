@@ -16,7 +16,6 @@ import { Empresas } from '../api/empresas.js';
         this.state={
             
         }
-        
     }
 
     desasignarRecoleccion(id){
@@ -26,20 +25,24 @@ import { Empresas } from '../api/empresas.js';
     renderRecolecciones(){
         return this.props.recolecciones.map((r,i)=>{
             return(
+               
                 <li key={i} className="list-group-item">
                  <h3>Recoleccion a: {r.empresa}</h3>
                  <strong>Fecha:</strong> {r.fecha}<br/>
                  <strong>Hora:</strong> {r.hora}<br/>
                  <strong>Estado:</strong> {r.estado}<br/>
                  <button className='btn btn-success' onClick={this.desasignarRecoleccion.bind(this,r._id)}>Rechazar Recoleccion</button>
-                 <button type="button" className="btn btn-success" data-toggle="modal" data-target="#exampleModal">Procesar recoleccion</button>
-
-                 <ProcesarRecoleccion empresa={r.empresa} materiales={this.props.materiales} recoleccion ={r._id}/>
+                 <button type="button" className="btn btn-success" onClick={this.ProcesarRecoleccion.bind(this,r._id)}>Procesar recoleccion</button>
                 </li>
+            
             );
         })
     };
 
+    ProcesarRecoleccion(id){
+        localStorage.setItem('recoleccion', id);
+        window.location.assign("/procesarRecoleccion")
+    }
 
 
   render() {

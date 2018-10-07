@@ -45,7 +45,16 @@ class FormEmpresa extends Component {
             cContacto:this.state.cContacto
         }
 
-        Meteor.call('empresas.add', empresa);        
+        Meteor.call('empresas.add', empresa);   
+        
+        this.setState({
+            NIT: '',
+            nomEmpresa:'',
+            telefono: '',
+            direccion: '',
+            nContacto: '',
+            cContacto:''
+        });
       }
 
 

@@ -33,6 +33,7 @@ class Navbar extends Component {
                    <a className="nav-item nav-link" href="/registrarEmpresa">Registrar empresa</a>
                    <a className="nav-item nav-link" href="/crearRecoleccion">Crear Recolección</a>
                    <a className="nav-item nav-link" href="/actualizarMateriales">Actualizar Materiales</a>
+                   <a className="nav-item nav-link" href="/verRecoleccionesTerminadas">Ver Recolecciones Terminadas</a>
                    <AccountsUIWrapper/> 
              </div>
              </div>
