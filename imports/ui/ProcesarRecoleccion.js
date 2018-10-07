@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
-
-
-import {Recolecciones} from '../api/recolecciones.js';
-import {Materiales} from '../api/materiales.js';
-import {Empresas} from '../api/empresas.js';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 
-class ProcesarRecoleccion extends Component {
+
+import {Materiales} from '../api/materiales.js';
+import {Empresas} from '../api/empresas.js';
+
+export class ProcesarRecoleccion extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -29,6 +29,7 @@ class ProcesarRecoleccion extends Component {
         }
 
     handleSubmit(event) {
+
 
         let recoleccion ={
             empresa: this.state.empresa,
@@ -103,7 +104,7 @@ ProcesarRecoleccion.propTypes = {
     materiales: PropTypes.array.isRequired
   };
   
-  export default withTracker(() => {
+export default withTracker(() => {
     Meteor.subscribe('empresasPorNombre', this.state.nomEmpresa);
     Meteor.subscribe('recolecciones');
     Meteor.subscribe('materiales');

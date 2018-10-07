@@ -31,7 +31,7 @@ import {Recolecciones} from '../api/recolecciones.js';
                  <strong>Estado:</strong> {r.estado}<br/>
                  <button className='btn btn-success' onClick={this.desasignarRecoleccion.bind(this,r._id)}>Rechazar Recoleccion</button>
                  <ProcesarRecoleccion empresa={r.empresa}/>
-                 </li>
+                </li>
             );
         })
     };
