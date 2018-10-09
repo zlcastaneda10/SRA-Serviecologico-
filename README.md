@@ -9,7 +9,7 @@ The demo of the app is here
 http://serviecologico-sra.herokuapp.com/
 
 ## Requirements
-To run this project in yoour computer you will need Meteor, you can install it from here https://www.meteor.com/
+To run this project in your computer you will need Meteor, you can install it from here https://www.meteor.com/
 
 ## Installation 
 Clone the repository to your computer, in the project folder run the following command
@@ -25,26 +25,6 @@ meteor
 
 The app is now listening in localhost:3000.
 
-No we are starting the client
-`
-cd /cliente
-`
-
-run 
-`
-yarn install
-`
-`
-yarn start
-`
-
-
-`
-cd data/
-`
-`
-mongoimport -d swipe -c objects --jsonArray --file swipe.json
-`
 ## Technologies used
 For the development of the app, the technologies used were:
 - Meteor
@@ -58,9 +38,10 @@ Here is a screenshot of the page
 ## Authors
 The web page was created by Zulma Castañeda and Juan Camilo Useche.
 You can find our presentation pages here:
-https://zlcastaneda10.github.io/
 
-https://juancamilousecherodriguez.github.io/
+ - https://zlcastaneda10.github.io/
+
+- https://juancamilousecherodriguez.github.io/
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
