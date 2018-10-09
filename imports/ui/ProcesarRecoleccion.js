@@ -35,7 +35,7 @@ class ProcesarRecoleccion extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let total =  document.getElementById("total_global").value
+        let total =  document.getElementById("total_global").value   // Preferible hacer esto usando refs
         Meteor.call('recolecciones.procesar', this.state.recoleccion, total);   
         this.volver();     
     }
@@ -102,7 +102,7 @@ class ProcesarRecoleccion extends Component {
             console.log(cantidad)
             totalGlobal = totalGlobal+ cantidad
         });
-        let camilo =document.getElementById("total_global")
+        let camilo =document.getElementById("total_global") // Preferible hacer esto usando refs
         camilo.value = totalGlobal
     }
   render() {

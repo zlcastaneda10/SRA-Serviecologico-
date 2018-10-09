@@ -75,9 +75,10 @@ FormRecolectores.propTypes = {
     user: PropTypes.object
   };
   
+// El withTracker aqui no es necesario, ya solo pasa el meteor user y este nunca se usa en este componente
   export default withTracker(() => {
      
     return {
-      user: Meteor.user()
+      user: Meteor.user()         
     };
   })(FormRecolectores);

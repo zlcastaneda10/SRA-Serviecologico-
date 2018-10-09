@@ -9,7 +9,7 @@ import {Recolecciones} from '../api/recolecciones.js';
 
     constructor(props){
         super(props);
-        this.state={
+        this.state={  //  State vacio, se puede omitir
             
         }
         
