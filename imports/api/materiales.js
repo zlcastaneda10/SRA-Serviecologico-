@@ -13,7 +13,7 @@ if (Meteor.isServer) {
     {
       'materiales.update': function(pMaterial, price) {
 
-        var doc = Materiales.findOne({ material:pMaterial });
+        var doc = Materiales.findOne({ material:pMaterial }); // No es necesario esto, el update se puede hacer dierectamente usando pMaterial, ya que solo es un elemento
         Materiales.update(
             { _id: doc._id },
             {
