@@ -1,3 +1,5 @@
+// Este Archivo no es utilizado, deberia eliminarse
+
 import React, { Component } from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
